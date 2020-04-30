@@ -11,7 +11,7 @@ class LinksController < ApplicationController
   end 
 
   def create 
-    @link = Link.create(original_url: params[:link][:original_url])
+    Link.create(original_url: params[:link][:original_url])
     flash[:success] = "You created a new link! 🔗"
     redirect_to "/links"
   end 

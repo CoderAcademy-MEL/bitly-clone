@@ -1,0 +1,21 @@
+<% if flash[:success] %>
+  <p><%= flash[:success] %></p>
+<% end %>
+
+<%= form_with model: @link, local: true do |form|  %>
+  <%= form.label :original_url %>
+  <%= form.text_field :original_url %>
+  <%= form.submit %>
+<% end %>
+
+<h1>Generated links</h1>
+
+<ul>
+  <% @links.each do |link| %>
+    <h3>Original Url</h3>
+    <p><%= link.original_url %></p>
+    <h3>Short Url</h3>
+    <p><%= "http://localhost:3000/" + generate_base_36_num(link.id) %></p>
+    <hr>
+  <% end %>
+</ul>
